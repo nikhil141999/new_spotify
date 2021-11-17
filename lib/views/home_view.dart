@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:just_audio_background/just_audio_background.dart';
 import 'package:new_spotify/widgets/album_card.dart';
 import 'package:new_spotify/widgets/song_card.dart';
 
@@ -61,7 +63,16 @@ class _HomeViewState extends State<HomeView> {
                           children: [
                             Icon(Icons.history),
                             SizedBox(width: 20),
-                            Icon(Icons.settings),
+                            IconButton(
+                              onPressed: () async {
+                                print('play');
+
+                                AudioPlayer audioPlayer = AudioPlayer();
+
+                                await audioPlayer.play();
+                              },
+                              icon: Icon(Icons.settings),
+                            ),
                           ],
                         )
                       ],
